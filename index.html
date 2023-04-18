@@ -12,6 +12,8 @@
         let computerChoice;
         let playerChoice;
         let result;
+        let playerScore = 0;
+        let computerScore = 0;
         function getComputerChoice() {
             thrownNumber = Math.floor(Math.random()*3);
             switch (thrownNumber) {
@@ -40,22 +42,41 @@
                     return "win";
                 }
         }
-        getComputerChoice();
-        playerChoice = prompt("What do you choose?").toLowerCase();
-        result = playRound(playerChoice,computerChoice);
-        switch (result) {
-            case "invalid":
+        function interpretResult(result){
+            switch (result) {
+              case "invalid":
                 console.log("Player did not enter a valid input");
                 break;
-            case "draw": 
+              case "draw": 
                 console.log(`Game was a draw. Player chose ${playerChoice} and Computer chose ${computerChoice}`);
                 break;
-            case "loss": 
+              case "loss": 
                 console.log(`Game ended in defeat for the player. Player chose ${playerChoice} and Computer chose ${computerChoice}.`);
+                computerScore++;
                 break;
-            case "win": 
+              case "win": 
                 console.log(`Game ended in victory for the player. Player chose ${playerChoice} and Computer chose ${computerChoice}.`);
+                playerScore++;
                 break;
+            }
         }
+        function playGame() {
+            getComputerChoice();
+            playerChoice = prompt("What do you choose?").toLowerCase();
+            result = playRound(playerChoice,computerChoice);
+            interpretResult(result);
+            console.log(`Player's score is ${playerScore} and computer's score is ${computerScore}`)
+        }
+        playGame();
+        while (playerScore < 5 && computerScore < 5) {
+            console.log("Let's play another game!");
+            playGame();
+        }
+        if (computerScore === 5) {
+            console.log("Computer Wins!");
+        } else if (playerScore === 5) {
+            console.log("Player Wins!");
+        }
+
     </script>
 </html>
