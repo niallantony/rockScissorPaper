@@ -32,7 +32,7 @@ function throwComputer (thrown){
     compZone.innerText = '';
     const thrownTitle = document.createElement('div');
     const thrownImage = document.createElement('IMG');
-    thrownImage.setAttribute('src',`../images/${thrown}.png`);
+    thrownImage.setAttribute('src',`/images/${thrown}.png`);
     thrownImage.classList.add('thrown-image')
     thrownTitle.textContent = `Computer: ${thrown}`;
     thrownTitle.classList.add('thrown-text');
@@ -43,7 +43,7 @@ function throwPlayer (thrown){
     playerZone.innerText = '';
     const thrownTitle = document.createElement('div');
     const thrownImage = document.createElement('IMG');
-    thrownImage.setAttribute('src',`../images/${thrown}.png`);
+    thrownImage.setAttribute('src',`/images/${thrown}.png`);
     thrownImage.classList.add('thrown-image')
     thrownTitle.textContent = `Player: ${thrown}`;
     thrownTitle.classList.add('thrown-text');
