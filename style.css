@@ -15,11 +15,11 @@ div.button-container {
     gap:100px;
     justify-content: center;
 }
-div.button {
+.button {
     flex:0 1 auto;
 }
 
-button {
+.button {
     text-align: center;
     width:100px;
     height: 100px;
@@ -29,6 +29,19 @@ button {
     border-radius:12px;
     box-shadow: 0 8px 0 0 #131313;
 }
+
+.button-inactive {
+    text-align: center;
+    width:100px;
+    height: 100px;
+    margin:0px;
+    background-color:lightslategray;
+    border:5px solid #333333;
+    color: #333333;
+    border-radius:12px;
+    transform: translateY(8px);
+} 
+
 button:hover {
     background-color: aliceblue;
 }
@@ -37,9 +50,20 @@ button:active {
     box-shadow: 0 0;
 }
 
+.thrown-text {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    align-self: center;
+    margin-top:5px;
+}
+.thrown-image {
+    width:150px;
+    height:150px;
+    align-self: center;
+}
+
 .arena {
     margin-top: 32px;
-    height:300px;
+    height:210px;
     display:flex;
     justify-content: center;
     gap:32px;
@@ -50,4 +74,25 @@ button:active {
     flex:0 0 auto;
     border: 5px solid #131313;
     border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content:start;
+    gap:10px;
+}
+.scoredisplay{
+    display:flex;
+    justify-content: center;
+    padding:32px;
+}
+.score {
+    margin: 48px 32px 32px 32px;
+    font-size: 1.5rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+.winner {
+    margin: 32px 32px 32px 32px;
+    font-size: 2rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
 }

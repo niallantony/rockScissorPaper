@@ -4,6 +4,8 @@ let playerChoice;
 let result;
 let playerScore = 0;
 let computerScore = 0;
+let game = true;
+
 function getComputerChoice() {
     thrownNumber = Math.floor(Math.random()*3);
     switch (thrownNumber) {
@@ -18,13 +20,7 @@ function getComputerChoice() {
     }
 }
 function playRound(playerChoice,computerChoice) {
-        let valid;
-        if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissor") {
-            valid = true;
-        }
-        if (valid != true) {
-            return "invalid";
-        } else if (playerChoice === computerChoice) {
+        if (playerChoice === computerChoice) {
             return "draw";
         } else if ((playerChoice === "rock" && computerChoice === "paper") || (playerChoice === "paper" && computerChoice === "scissor") || (playerChoice === "scissor" && computerChoice === "rock")) {
             return "loss";
@@ -32,11 +28,31 @@ function playRound(playerChoice,computerChoice) {
             return "win";
         }
 }
+function throwComputer (thrown){
+    compZone.innerText = '';
+    const thrownTitle = document.createElement('div');
+    const thrownImage = document.createElement('IMG');
+    thrownImage.setAttribute('src',`../images/${thrown}.png`);
+    thrownImage.classList.add('thrown-image')
+    thrownTitle.textContent = `Computer: ${thrown}`;
+    thrownTitle.classList.add('thrown-text');
+    compZone.appendChild(thrownTitle);
+    compZone.appendChild(thrownImage);
+}
+function throwPlayer (thrown){
+    playerZone.innerText = '';
+    const thrownTitle = document.createElement('div');
+    const thrownImage = document.createElement('IMG');
+    thrownImage.setAttribute('src',`../images/${thrown}.png`);
+    thrownImage.classList.add('thrown-image')
+    thrownTitle.textContent = `Player: ${thrown}`;
+    thrownTitle.classList.add('thrown-text');
+    playerZone.appendChild(thrownTitle);
+    playerZone.appendChild(thrownImage);
+}
+
 function interpretResult(result){
     switch (result) {
-      case "invalid":
-        console.log("Player did not enter a valid input");
-        break;
       case "draw": 
         console.log(`Game was a draw. Player chose ${playerChoice} and Computer chose ${computerChoice}`);
         break;
@@ -50,13 +66,65 @@ function interpretResult(result){
         break;
     }
 }
-function playGame() {
+function playGame(playerChoice) {
     getComputerChoice();
-    playerChoice = prompt("What do you choose?").toLowerCase();
+    console.log(playerChoice);
     result = playRound(playerChoice,computerChoice);
+    throwPlayer(playerChoice);
+    throwComputer(computerChoice);
     interpretResult(result);
-    console.log(`Player's score is ${playerScore} and computer's score is ${computerScore}`)
+
+    score.textContent=`Player's score is ${playerScore} and computer's score is ${computerScore}`
+    if (computerScore === 5) {
+        endGame("Computer");
+        game = false;
+    } else if (playerScore === 5) {
+        endGame("Player");
+        game = false;
+    }
 }
+function endGame(winner) {
+    winnerDisplay.classList.add('winner');
+    winnerDisplay.textContent = `${winner} Wins!`;
+    scoredisplay.appendChild(winnerDisplay);
+    scoredisplay.removeChild(score); 
+    newGame.classList.add('button');
+    newGame.textContent = "Play Again?";
+    scoredisplay.appendChild(newGame);
+    newGame.addEventListener('click',startNewGame);
+}
+
+function startNewGame() {
+    game = true;
+    playerScore = 0;
+    computerScore = 0;
+    playerZone.innerText = '';
+    compZone.innerText = '';
+    scoredisplay.removeChild(newGame);
+    scoredisplay.removeChild(winnerDisplay);
+    scoredisplay.appendChild(score);
+    score.textContent = '';
+}
+
+const buttons = document.querySelectorAll('button');
+const playerZone = document.querySelector('#player');
+const compZone = document.querySelector('#computer');
+const score = document.querySelector('.score');
+const scoredisplay = document.querySelector('.scoredisplay');
+const buttonContainer = document.querySelector('.button-container')
+const newGame = document.createElement('button');
+const winnerDisplay = document.createElement('div');
+buttons.forEach(button => button.addEventListener('click', function (e) {
+    playerChoice=e.target.id;
+    if (game===true) {
+    playGame(playerChoice);
+    }
+}));
+
+
+/*
+Original Code
+
 playGame();
 while (playerScore < 5 && computerScore < 5) {
     console.log("Let's play another game!");
@@ -67,3 +135,4 @@ if (computerScore === 5) {
 } else if (playerScore === 5) {
     console.log("Player Wins!");
 }
+*/
