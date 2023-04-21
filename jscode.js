@@ -20,12 +20,10 @@ function getComputerChoice() {
     }
 }
 function playRound(playerChoice,computerChoice) {
-        if (playerChoice === computerChoice) {
-            return "draw";
-        } else if ((playerChoice === "rock" && computerChoice === "paper") || (playerChoice === "paper" && computerChoice === "scissor") || (playerChoice === "scissor" && computerChoice === "rock")) {
-            return "loss";
+        if ((playerChoice === "rock" && computerChoice === "paper") || (playerChoice === "paper" && computerChoice === "scissor") || (playerChoice === "scissor" && computerChoice === "rock")) {
+            computerScore++;
         } else {
-            return "win";
+            playerScore++
         }
 }
 function throwComputer (thrown){
@@ -51,28 +49,12 @@ function throwPlayer (thrown){
     playerZone.appendChild(thrownImage);
 }
 
-function interpretResult(result){
-    switch (result) {
-      case "draw": 
-        console.log(`Game was a draw. Player chose ${playerChoice} and Computer chose ${computerChoice}`);
-        break;
-      case "loss": 
-        console.log(`Game ended in defeat for the player. Player chose ${playerChoice} and Computer chose ${computerChoice}.`);
-        computerScore++;
-        break;
-      case "win": 
-        console.log(`Game ended in victory for the player. Player chose ${playerChoice} and Computer chose ${computerChoice}.`);
-        playerScore++;
-        break;
-    }
-}
 function playGame(playerChoice) {
     getComputerChoice();
     console.log(playerChoice);
     result = playRound(playerChoice,computerChoice);
     throwPlayer(playerChoice);
     throwComputer(computerChoice);
-    interpretResult(result);
 
     score.textContent=`Player's score is ${playerScore} and computer's score is ${computerScore}`
     if (computerScore === 5) {
