@@ -1,0 +1,53 @@
+div.pageheader{
+    display: flex;
+}
+div.title {
+    flex:1;
+    font-size: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    margin:32px;
+    min-width: 385x;
+}
+div.button-container {
+    display: flex;
+    padding: 32px;
+    gap:100px;
+    justify-content: center;
+}
+div.button {
+    flex:0 1 auto;
+}
+
+button {
+    text-align: center;
+    width:100px;
+    height: 100px;
+    margin:0px;
+    background-color:ghostwhite;
+    border:5px solid #131313;
+    border-radius:12px;
+    box-shadow: 0 8px 0 0 #131313;
+}
+button:hover {
+    background-color: aliceblue;
+}
+button:active {
+    transform: translateY(8px);
+    box-shadow: 0 0;
+}
+
+.arena {
+    margin-top: 32px;
+    height:300px;
+    display:flex;
+    justify-content: center;
+    gap:32px;
+}
+.zone {
+    width:200px;
+    height:200px;
+    flex:0 0 auto;
+    border: 5px solid #131313;
+    border-radius: 12px;
+}
