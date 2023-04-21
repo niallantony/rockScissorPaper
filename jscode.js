@@ -23,7 +23,7 @@ function playRound(playerChoice,computerChoice) {
         if ((playerChoice === "rock" && computerChoice === "paper") || (playerChoice === "paper" && computerChoice === "scissor") || (playerChoice === "scissor" && computerChoice === "rock")) {
             computerScore++;
         } else if (playerChoice === computerChoice) {
-            break;
+            return;
         } else {
             playerScore++
         }
