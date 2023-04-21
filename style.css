@@ -1,10 +1,13 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
 div.pageheader{
     display: flex;
 }
 div.title {
     flex:1;
     font-size: 2rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     margin:32px;
     min-width: 385x;
@@ -87,12 +90,10 @@ button:active {
 .score {
     margin: 48px 32px 32px 32px;
     font-size: 1.5rem;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
 }
 .winner {
     margin: 32px 32px 32px 32px;
     font-size: 2rem;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
 }
